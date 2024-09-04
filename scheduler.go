@@ -10,7 +10,10 @@ func StartScheduler(config Config) {
 	go func() {
 		for {
 			now := time.Now()
-			nextRun := time.Date(now.Year(), now.Month(), now.Day(), config.Hour, config.Minute, 0, 0, now.Location())
+			// nextRun := time.Date(now.Year(), now.Month(), now.Day(), config.Hour, config.Minute, 0, 0, now.Location())
+
+			// to test manually
+			nextRun := now.Add(2 * time.Minute)
 
 			if now.After(nextRun) {
 				nextRun = nextRun.Add(24 * time.Hour)
